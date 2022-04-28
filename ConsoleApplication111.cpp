@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -6,18 +6,18 @@
 #include <math.h>
 using namespace std;
 
-#define pop_size		2000		    // размер популяции
-#define max_iteration	16000	    // максимальное число итераций
-#define elitrate		0.10		// элитарность
+#define pop_size	200 		// размер популяции
+#define max_iteration	16000	        // максимальное число итераций
+#define elitrate	0.10		// элитарность
 #define mutation_rate	0.25		// мутации
-#define mutation		RAND_MAX * mutation_rate
-#define end_target		string("МИР")
+#define mutation	RAND_MAX * mutation_rate
+#define end_target	string("МИР")
 
 // особь
 struct individual
 {
-	string str;						// строка
-	unsigned int fitness;		    // пригодность
+	string str;		// строка
+	unsigned int fitness;	// пригодность
 };
 
 typedef vector<individual> ind;
@@ -36,7 +36,7 @@ void init_population(ind& population, ind& offspring)
 
 		for (int j = 0; j < tsize; j++)
 		{
-			citizen.str += (rand() % 90) + 34;
+			citizen.str += (rand() % 220) + 34;
 		}
 
 		population.push_back(citizen);
@@ -92,7 +92,7 @@ void mutate(individual& member)
 {
 	int tsize = end_target.size();
 	int ipos = rand() % tsize;
-	int delta = (rand() % 90) + 34;
+	int delta = (rand() % 220) + 34;
 
 	member.str[ipos] = ((member.str[ipos] + delta) % 122);
 }
